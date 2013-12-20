@@ -206,7 +206,7 @@ results in:
 Benchmarks
 ----------
 
-On average, `jsonsafeparse` as half as fast as `JSON.parse`.
+On average, `jsonsafeparse` is half as fast as `JSON.parse`.
 
     $ node benchmark/benchmark.js
     testing with the following JSON
