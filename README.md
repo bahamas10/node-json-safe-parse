@@ -144,6 +144,9 @@ jsonsafeparse('{"x": 5, "hasOwnProperty": "foo"}', 'replace')
 Same as above, but this function takes a JavaScript object (or array,
 string, etc.) that has already been parsed.
 
+This is useful for objects that have already been parsed for you,
+such as the output of `querystring.parse`, `req.headers`, etc.
+
 Example
 -------
 
