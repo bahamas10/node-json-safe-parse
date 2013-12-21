@@ -141,8 +141,8 @@ jsonsafeparse('{"x": 5, "hasOwnProperty": "foo"}', 'replace')
 
 ### `jsonsafeparse.fix(obj, behavior='ignore')`
 
-Same as above, but allows you to "clean up" an object that has already been
-parsed.
+Same as above, but this function takes a JavaScript object (or array,
+string, etc.) that has already been parsed.
 
 Example
 -------

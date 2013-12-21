@@ -15,18 +15,17 @@ function jsonsafeparse(s, behavior) {
 
   var obj = JSON.parse(s, reviver);
 
-  // do nothing for this behavior
-  if (behavior === 'replace')
-    return obj;
-
   return fix(obj, behavior);
 }
 
-// given an array or object, "fix" the elements
-// that matched reserved keywords
+// recursively fix every element found in obj, and
+// return the fixed obj
 function fix(obj, behavior) {
-  var i;
+  // do nothing for the 'replace'  behavior
+  if (behavior === 'replace')
+    return obj;
 
+  var i;
   if (Array.isArray(obj)) {
     // fix every element in an array
     for (i in obj) {
@@ -41,10 +40,6 @@ function fix(obj, behavior) {
         switch (behavior) {
           case 'throw':
             throw new SyntaxError(util.format('reserved keyword "%s" found in object', i));
-            break;
-          case 'replace':
-            // the replace has already been done
-            // this shouldn't be reached
             break;
           case 'ignore':
           default:
