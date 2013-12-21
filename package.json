@@ -1,6 +1,6 @@
 {
   "name": "json-safe-parse",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Parse JSON and silently ignore or error on reserved keys like hasOwnProperty, toString, etc.",
   "author": "Dave Eddy <dave@daveeddy.com> (http://www.daveeddy.com)",
   "main": "./json-safe-parse.js",
