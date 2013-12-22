@@ -145,7 +145,21 @@ Same as above, but this function takes a JavaScript object (or array,
 string, etc.) that has already been parsed.
 
 This is useful for objects that have already been parsed for you,
-such as the output of `querystring.parse`, `req.headers`, etc.
+such as the output of `querystring.parse`, `req.headers`, `process.env`, etc.
+
+ie
+
+``` js
+// strip out any reserved keywords from the headers object
+// .fix() returns a reference to the original object, as it
+// is fixed inplace
+req.headers = jsonsafeparse.fix(req.headers);
+
+// strip out any reserved keywords from environmental variables
+// note: because this is done in place, capturing the return
+// reference is not needed
+jsonsafeparse.fix(process.env);
+```
 
 Example
 -------
