@@ -9,5 +9,7 @@
   },
   "repository": "git://github.com/bahamas10/node-json-safe-parse.git",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "cleanse": "~0.0.3"
+  }
 }

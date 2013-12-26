@@ -99,6 +99,8 @@ parser just to get this functionality.
 This module provides a safe mechanism for parsing JSON, without implementing or
 recreating a JSON parser.
 
+The object is cleansed using this module https://github.com/bahamas10/node-cleanse
+
 Usage
 -----
 
@@ -139,10 +141,14 @@ jsonsafeparse('{"x": 5, "hasOwnProperty": "foo"}', 'replace')
 // => {x: 5, "hasOwnProperty": "foo"}
 ```
 
-### `jsonsafeparse.fix(obj, behavior='ignore')`
+### `jsonsafeparse.cleanse(obj, behavior='ignore')`
+
+The function found in https://github.com/bahamas10/node-cleanse
 
 Same as above, but this function takes a JavaScript object (or array,
-string, etc.) that has already been parsed.
+string, etc.) that has already been parsed.  The behavior can be `ignore`
+or `throw` for the cleanse method; `replace` is only relevant for the
+`jsonsafeparse` function.
 
 This is useful for objects that have already been parsed for you,
 such as the output of `querystring.parse`, `req.headers`, `process.env`, etc.
@@ -151,14 +157,14 @@ ie
 
 ``` js
 // strip out any reserved keywords from the headers object
-// .fix() returns a reference to the original object, as it
+// .cleanse() returns a reference to the original object, as it
 // is fixed inplace
-req.headers = jsonsafeparse.fix(req.headers);
+req.headers = jsonsafeparse.cleanse(req.headers);
+// same as
+jsonsafeparse.cleanse(req.headers);
 
 // strip out any reserved keywords from environmental variables
-// note: because this is done in place, capturing the return
-// reference is not needed
-jsonsafeparse.fix(process.env);
+jsonsafeparse.cleanse(process.env);
 ```
 
 Example

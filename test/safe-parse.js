@@ -42,5 +42,6 @@ console.log('done\n');
 
 console.log('ensuring jsonsafeparse(s, \'replace\') === JSON.parse(s)');
 d = jsonsafeparse(s, 'replace');
+
 assert.deepEqual(d, JSON.parse(s));
 console.log('done\n');
